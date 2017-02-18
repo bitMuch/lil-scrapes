@@ -8,13 +8,13 @@ from urllib.request import urlopen		                # function for opening web p
 from urllib.request import urlretrieve                          # function for saving pdfs to disk
 # --- Definitions --- #
 ingredients = 'https://uk.sans.org/reading-room/whitepapers/auditing/index.html'
-root = ingredients[:19]				                                  # strip root url for use later 
+root = ingredients[:19]				                # strip root url for use later 
 # --- Functions --- #
 def main():
   soup = BeautifulSoup(urlopen(ingredients), 'html.parser')     # open page
   for link in soup.find_all('a'):                               # find links
     link = (link.get('href'))                                   # find string in link
-    if '/reading-room/whitepapers/auditing/' in link:           # we only want pdfs
+    if '/reading-room/whitepapers/auditing/' in link:           # we only want pdf links
       pdl = ('%s%s' % (root, link))                             # build full link to pdf
       pdf = ('%s.pdf' % (pdl[54:]))                             # save file as
       urlretrieve(pdl, pdf)                                     # retreive link, save file
