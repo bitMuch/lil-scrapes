@@ -3,8 +3,8 @@
 # On: 17/02/2017
 # Task: Retrieve all Sans whitepapers
 # --- Preamble --- #
-from bs4 import BeautifulSoup			                              # funtions for parsing html
-from urllib.request import urlopen		                          # function for opening web page
+from bs4 import BeautifulSoup			                # funtions for parsing html
+from urllib.request import urlopen		                # function for opening web page
 from urllib.request import urlretrieve                          # function for saving pdfs to disk
 # --- Definitions --- #
 ingredients = 'https://uk.sans.org/reading-room/whitepapers/auditing/index.html'
@@ -17,7 +17,7 @@ def main():
     if '/reading-room/whitepapers/auditing/' in link:           # we only want pdfs
       pdl = ('%s%s' % (root, link))                             # build full link to pdf
       pdf = ('%s.pdf' % (pdl[54:]))                             # save file as
-      urlretrieve(pdl, pdf)                                     # retreive link, save ffile
+      urlretrieve(pdl, pdf)                                     # retreive link, save file
 # --- Main --- #
 if __name__ == "__main__":
   main()
